@@ -1,6 +1,6 @@
 // Action → Javascroptのオブジェクト(keyとvalueを持ち、valueはユニークでなければならない)
-const INCREMENT = 'INCREMENT';
-const DECREMENT = 'DECREMENT';
+export const INCREMENT = 'INCREMENT';
+export const DECREMENT = 'DECREMENT';
 
 
  // コンポーネントで利用するのでexportする

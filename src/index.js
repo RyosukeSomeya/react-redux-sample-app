@@ -5,7 +5,7 @@ import { Provider } from 'react-redux' // 作成したStoreを全コンポーネ
 import reducer from "./reducers"
 
 import './index.css';
-import App from './compornents/App';
+import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
 const store = createStore(reducer);
