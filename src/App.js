@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 
 // クラスコンポーネント
 // class App extends Component {
@@ -15,39 +15,39 @@ import PropTypes from 'prop-types';
 // }
 
 // // functionalコンポーネント
-const App = () => {
-  const profiles = [
-    { name: "Taro", age: 10 },
-    { name: "Hanako", age: 5 },
-    { name: "Noname"},
-  ];
+const App = () => (<Counter></Counter>)
 
-  return (
-    <div>
-      {
-        profiles.map((profile, index)=> {
-          return <User name={profile.name} age={profile.age} key={index}/>
-        })
-      }
-      {/* Userコンポーネントにname属性を与える */}
-      {/* <User name={"Taro"} age={10} />
-      <User name={"Hanako"} age={5} /> */}
-    </div>
-  )
+// Stateはclassコンポーネントで使える
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    console.log(this.state);
+    this.state = { count: 0 };
+  }
+
+  handlePulsButton = () => {
+    console.log("handlePulsButton");
+    this.setState({ count: this.state.count + 1 });
+    // setStateが走ると、render()がコールバックで呼ばれる（Domが再描画される）
+  }
+
+  handleMinusButton = () => {
+    console.log("handleMinusButton")
+    this.setState({ count: this.state.count - 1 });
+  }
+
+  render() {
+    console.log('render');
+    console.log(this.state);
+    return (
+      <React.Fragment>
+        <div>count: { this.state.count }</div>
+        <button onClick={this.handlePulsButton}>+</button>
+        <button onClick={this.handleMinusButton}>-</button>
+      </React.Fragment>
+    );
+  }
 }
 
-const User = (props) => {
-  return <div>Hi! I am { props.name }, and {props.age} years old!</div>
-}
-
-User.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
-}
-
-// // Userコンポーネントにデフォルトのpropsを設定しておく。(デフォルト引数のようなもの)
-// User.defaultProps = {
-//   age: 1
-// }
 
 export default App;
