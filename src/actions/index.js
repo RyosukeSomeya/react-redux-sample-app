@@ -1,16 +1,14 @@
-// Action → Javascroptのオブジェクト(keyとvalueを持ち、valueはユニークでなければならない)
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
+import axios from 'axios';
 
+export const READ_EVENTS = 'READ_EVENTS';
 
- // コンポーネントで利用するのでexportする
-export const increment = () => ({
-    // ActionCreator → Actionを返す関数
-    type: INCREMENT // increment側のアクション
-});
+const ROOT_URL = 'https://udemy-utils.herokuapp.com/api/v1';
+const QUERYSTRING = '?token=token123';
 
-// コンポーネントで利用するのでexportする
-export const decrement = () => ({
-    // ActionCreator → Actionを返す関数
-    type: DECREMENT // decrement側のアクション
-});
+export const readEvents = () => async (dispatch) => {
+    const response = await axios.get(`${ROOT_URL}/events${QUERYSTRING}`)
+    // console.log(response)
+
+    dispatch({ type: READ_EVENTS, response })
+}
+
