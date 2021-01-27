@@ -1,6 +1,7 @@
 // App内のすべてのReducerを総括する(すべてのReducerを結合する。)
 import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
 import events from './events';
 
 // countを結合し、Storeを作成する際に使うのでexportする
-export default combineReducers({ events });
+export default combineReducers({ events, form });
